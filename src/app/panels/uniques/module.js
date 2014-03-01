@@ -56,23 +56,23 @@ function (angular, app, _, $, kbn) {
        * missing:: Set to false to disable the display of a counter showing how much results are
        * missing the field
        */
-      missing : true,
+      missing : false,
       /** @scratch /panels/terms/5
        * other:: Set to false to disable the display of a counter representing the aggregate of all
        * values outside of the scope of your +size+ property
        */
-      other   : true,
+      other   : false,
       /** @scratch /panels/terms/5
        * size:: Show this many terms
        */
-      size    : 10,
+      size    : 10000000,
       /** @scratch /panels/terms/5
        * order:: In terms mode: count, term, reverse_count or reverse_term,
        * in terms_stats mode: term, reverse_term, count, reverse_count,
        * total, reverse_total, min, reverse_min, max, reverse_max, mean or reverse_mean
        */
       order   : 'count',
-      style   : { "font-size": '10pt'},
+      style   : { "font-size": '42pt'},
       /** @scratch /panels/terms/5
        * donut:: In pie chart mode, draw a hole in the middle of the pie to make a tasty donut.
        */
@@ -92,7 +92,7 @@ function (angular, app, _, $, kbn) {
       /** @scratch /panels/terms/5
        * chart:: table, bar or pie
        */
-      chart       : 'bar',
+      chart       : 'table',
       /** @scratch /panels/terms/5
        * counter_pos:: The location of the legend in respect to the chart, above or below.
        */
@@ -274,7 +274,7 @@ function (angular, app, _, $, kbn) {
             if(scope.panel.tmode === 'terms_stats') {
               slice = { label : v.term, data : [[k,v[scope.panel.tstat]]], actions: true};
             }
-            scope.data.push(slice);
+            // scope.data.push(slice);
             k = k + 1;
           });
 
@@ -285,6 +285,9 @@ function (angular, app, _, $, kbn) {
             scope.data.push({label:'Other values',
               data:[[k+1,scope.results.facets.terms.other]],meta:"other",color:'#444'});
           }
+
+          scope.data.push({label:'Total',
+              data:[[k+2,scope.results.facets.terms.terms.length]],meta:"total",color:'#444'});
         }
 
         // Function for rendering panel
