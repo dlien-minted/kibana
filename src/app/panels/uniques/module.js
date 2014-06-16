@@ -174,7 +174,7 @@ function (angular, app, _, $, kbn) {
           .facetFilter($scope.ejs.QueryFilter(
             $scope.ejs.FilteredQuery(
               boolQuery,
-              filterSrv.getBoolFilter(filterSrv.ids)
+              filterSrv.getBoolFilter(filterSrv.ids())
             )))).size(0);
       }
       if($scope.panel.tmode === 'terms_stats') {
@@ -187,7 +187,7 @@ function (angular, app, _, $, kbn) {
           .facetFilter($scope.ejs.QueryFilter(
             $scope.ejs.FilteredQuery(
               boolQuery,
-              filterSrv.getBoolFilter(filterSrv.ids)
+              filterSrv.getBoolFilter(filterSrv.ids())
             )))).size(0);
       }
 
@@ -323,8 +323,8 @@ function (angular, app, _, $, kbn) {
                   xaxis: { show: false },
                   grid: {
                     borderWidth: 0,
-                    borderColor: '#eee',
-                    color: "#eee",
+                    borderColor: '#c8c8c8',
+                    color: "#c8c8c8",
                     hoverable: true,
                     clickable: true
                   },
@@ -362,7 +362,7 @@ function (angular, app, _, $, kbn) {
                     }
                   },
                   //grid: { hoverable: true, clickable: true },
-                  grid:   { hoverable: true, clickable: true },
+                  grid:   { hoverable: true, clickable: true, color: '#c8c8c8' },
                   colors: querySrv.colors
                 });
               }
