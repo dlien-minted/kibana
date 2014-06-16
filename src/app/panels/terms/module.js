@@ -262,6 +262,11 @@ function (angular, app, _, $, kbn) {
           render_panel();
         });
 
+        // Re-render if the window is resized
+        angular.element(window).bind('resize', function(){
+          render_panel();
+        });
+
         function build_results() {
           var k = 0;
           scope.data = [];
